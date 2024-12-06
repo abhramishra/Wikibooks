@@ -10,7 +10,7 @@ function BookShow({book , onEdit, onDelete}) {
 
     const handleEdit = (id, title) => {
         setShowEdit(false)
-        onEdit(id, title)
+        onEdit(id, {title})
     }
 
     const handleDelete = () => {

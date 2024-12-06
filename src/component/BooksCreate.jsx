@@ -8,7 +8,7 @@ function BooksCreate({ onCreate }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        onCreate(title)
+        onCreate({"title": title})
     }
     return (
         <div style={{ marginTop: '50px' }}>
