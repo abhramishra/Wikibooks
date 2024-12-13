@@ -8,7 +8,4 @@ root.render(
   <Provider>
     <App/>
   </Provider>
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
 );

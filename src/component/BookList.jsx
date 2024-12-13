@@ -9,11 +9,13 @@ function BookList() {
     return (
         <div>
             <h2>Reading List - {books.length}</h2>
+            <div>
             {
                 books.map(book => {
                     return <BookShow key={book.id} book={book} />
                 })
             }
+            </div>
         </div>
     )
 }
