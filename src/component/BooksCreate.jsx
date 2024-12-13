@@ -1,6 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useRef} from 'react';
+import BooksContext from '../context/Book';
 
-function BooksCreate({ onCreate }) {
+function BooksCreate() {
+    const {handleCreate} = useContext(BooksContext)
+    const inputRef = useRef(null)
     const [title, setTitle] = useState('')
 
     const handleChange = (e) => {
@@ -8,7 +11,8 @@ function BooksCreate({ onCreate }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        onCreate({"title": title})
+        handleCreate({"title": title})
+        inputRef.current.focus()
     }
     return (
         <div style={{ marginTop: '50px' }}>
@@ -16,7 +20,7 @@ function BooksCreate({ onCreate }) {
             <h2>Add a Book</h2>
             <form onSubmit={handleSubmit}>
                 <label>Enter book title</label>
-                <input type='text' name='title' value={title} onChange={handleChange} />
+                <input type='text' name='title' ref={inputRef} value={title} onChange={handleChange} />
                 <input type='submit' value='Add' />
             </form>
         </div>

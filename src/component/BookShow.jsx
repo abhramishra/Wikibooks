@@ -1,7 +1,10 @@
 
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import BookEdit from './BookEdit';
+import BooksContext from '../context/Book';
+
 function BookShow({book , onEdit, onDelete}) {
+    const {handleUpdate, handleRemove} = useContext(BooksContext)
     const [showEdit, setShowEdit] = useState(false)
     const handleShowUpdateForm = () => {
         setShowEdit(!showEdit)
@@ -10,11 +13,11 @@ function BookShow({book , onEdit, onDelete}) {
 
     const handleEdit = (id, title) => {
         setShowEdit(false)
-        onEdit(id, {title})
+        handleUpdate(id, {title})
     }
 
     const handleDelete = () => {
-        onDelete(book.id)
+        handleRemove(book.id)
     }
 
     let content = book.title
