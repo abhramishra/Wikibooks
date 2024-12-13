@@ -1,8 +1,8 @@
-import React, {useState, useContext, useRef} from 'react';
-import BooksContext from '../context/Book';
+import React, {useState, useRef} from 'react';
+import useBooksContext from '../hooks/Book';
 
 function BooksCreate() {
-    const {handleCreate} = useContext(BooksContext)
+    const {handleCreate} = useBooksContext()
     const inputRef = useRef(null)
     const [title, setTitle] = useState('')
 
