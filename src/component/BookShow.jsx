@@ -1,16 +1,10 @@
 
 import {useState} from 'react';
 import BookEdit from './BookEdit';
+import useBooksContext from "../hooks/Book";
 
-const boxStyle = {
-    padding: '20px',
-    background: '#ebe0e0',
-    border: '2px solid #986c6c',
-    borderRadius: '10px',
-    marginBottom: '10px',
-    width: '20%'
-}
 function BookShow({book , onEdit, onDelete}) {
+    const {handleUpdate, handleRemove} = useBooksContext()
     const [showEdit, setShowEdit] = useState(false)
     const handleShowUpdateForm = () => {
         setShowEdit(!showEdit)
@@ -19,11 +13,11 @@ function BookShow({book , onEdit, onDelete}) {
 
     const handleEdit = (id, title) => {
         setShowEdit(false)
-        onEdit(id, {title})
+        handleUpdate(id, {title})
     }
 
     const handleDelete = () => {
-        onDelete(book.id)
+        handleRemove(book.id)
     }
 
     let content = book.title
@@ -31,7 +25,7 @@ function BookShow({book , onEdit, onDelete}) {
         content = <BookEdit book={book} handleEdit={handleEdit} />
     }
     return (
-        <div style={boxStyle}>
+        <div>
             <div>{ content }</div>
             <button onClick={handleShowUpdateForm}>Update</button>
             <button onClick={handleDelete}>Delete</button>
