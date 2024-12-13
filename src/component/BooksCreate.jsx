@@ -11,8 +11,11 @@ function BooksCreate() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        handleCreate({"title": title})
-        inputRef.current.focus()
+        if (title.length !== 0) {
+            handleCreate({"title": title})
+            inputRef.current.focus()
+        }
+
     }
     return (
         <div style={{ marginTop: '50px' }}>
